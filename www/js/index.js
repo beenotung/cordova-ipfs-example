@@ -41,7 +41,7 @@ var app = {
 
         console.log('Received Event: ' + id);
         if (id === "deviceready") {
-            alert("ready");
+            alert("cordova device ready");
             main();
         } else {
             alert("Received Event: " + id);
@@ -51,7 +51,17 @@ var app = {
 
 app.initialize();
 
-function init() {
+function isIPFSReady() {
+    return fetch('http://localhost:5001/api/v0/object/get')
+        .then(function (res) {
+            return res.status === 200;
+        })
+        .catch(function () {
+            return false;
+        })
+}
+
+function initIPFS() {
     return new Promise(function (resolve, reject) {
         try {
             var ipfs = new CordovaIpfs();
@@ -79,6 +89,12 @@ function init() {
             alert("Exception: " + e.toString())
         }
     });
+}
+
+function init() {
+    return isIPFSReady().then(function (ready) {
+        return ready === true || initIPFS();
+    })
 }
 
 function load() {
