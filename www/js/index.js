@@ -62,6 +62,7 @@ function isIPFSReady() {
 }
 
 function initIPFS() {
+    alert('init IPFS');
     return new Promise(function (resolve, reject) {
         try {
             var ipfs = new CordovaIpfs();
@@ -74,6 +75,7 @@ function initIPFS() {
                 }
                 , function (res) {
                     alert("init Result: " + res.toString());
+                    alert('start IPFS daemon now');
                     ipfs.start(function (res) {
                         alert("start Result: " + (res || "").toString());
                         resolve(true);
@@ -92,6 +94,7 @@ function initIPFS() {
 }
 
 function init() {
+    alert('check IPFS service');
     return isIPFSReady().then(function (ready) {
         return ready === true || initIPFS();
     })
