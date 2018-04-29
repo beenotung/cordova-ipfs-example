@@ -1,11 +1,22 @@
 = cordova-ipfs-example
 
-== Cordova Dependency
+== Installation
+
+```
+yarn global add cordova || npm i -g cordova
+cordova prepare android
+cordova run android
+
+```
+
+== Dependencies
+
+=== Cordova Dependency
 
 . cordova-plugin-ipfs
 . cordova-plugin-file
 
-== Browser Dependency
+=== Browser Dependency
 
 . buffer https://github.com/feross/buffer
 . ipfs-api https://github.com/ipfs/js-ipfs-api
