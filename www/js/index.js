@@ -160,7 +160,7 @@ function test() {
         })
 }
 
-window.initUI = function () {
+function initUI() {
     document.getElementById('load_container').style.display = 'none';
     document.getElementById('input_container').style.display = 'initial';
     var margin = document.getElementById('enter').getBoundingClientRect().height * 8;
@@ -168,9 +168,10 @@ window.initUI = function () {
     document.getElementById('console').style.height = (height / 3 * 2) + 'px';
     document.getElementById('command').style.height = (height / 2) + 'px';
     document.getElementById('enter').addEventListener('click', onEnter, false);
-};
+}
 
 function main() {
+    initUI();
     return init()
         .then(function (res) {
             if (res !== true) {
@@ -178,10 +179,6 @@ function main() {
             }
         })
         .then(run(load))
-        .then(function (res) {
-            initUI();
-            return res;
-        })
         .then(run(test))
         .then(function (res) {
             alert("Main Result: " + (res || "").toString())
