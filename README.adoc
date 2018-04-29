@@ -1,0 +1,11 @@
+= cordova-ipfs-example
+
+== Cordova Dependency
+
+. cordova-plugin-ipfs
+. cordova-plugin-file
+
+== Browser Dependency
+
+. buffer https://github.com/feross/buffer
+. ipfs-api https://github.com/ipfs/js-ipfs-api
